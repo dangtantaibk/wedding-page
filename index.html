@@ -210,7 +210,7 @@
 	</div> -->
 
 		<div id="fh5co-header"
-			style="background: url('images/background/repeat-background/blue-brush-1.png'); background-repeat:repeat ">
+			style="background: url('images/background/blue-brush-1.jpg'); background-repeat:repeat ">
 			<div class="container">
 				<img class="flower-1" style="position: absolute; right: 0; top: 0"
 					src="images/background/flowers/top-right-1.svg">
@@ -628,7 +628,16 @@
 							đối với chúng tôi.</span>
 					</div>
 				</div>
-				<div class="row">
+				<table id="data-table">
+				<thead>
+					<tr>
+					<th>Tên</th>
+					<th>Lời chúc</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+				</table>
+				<!-- <div class="row">
 					<div class="col-md-12 animate-box">
 						<div class="wrap-testimony">
 							<div class="owl-carousel-fullwidth">
@@ -674,7 +683,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
@@ -686,7 +695,7 @@
 				</div>
 				<div class="row animate-box">
 					<div class="col-md-10 col-md-offset-1">
-						<form class="form-inline">
+						<form class="form-inline" onsubmit="saveData(event)">
 							<div class="col-md-4 col-sm-4">
 								<div class="form-group">
 									<label for="name" class="sr-only">Tên</label>
@@ -695,8 +704,8 @@
 							</div>
 							<div class="col-md-4 col-sm-4">
 								<div class="form-group">
-									<label for="email" class="sr-only">Lời cầu chúc</label>
-									<input type="enamemail" class="form-control" id="email" placeholder="Lời cầu chúc">
+									<label for="chuc" class="sr-only">Lời cầu chúc</label>
+									<input type="name" class="form-control" id="chuc" placeholder="Lời cầu chúc">
 								</div>
 							</div>
 							<div class="col-md-4 col-sm-4">
@@ -765,6 +774,94 @@
 	<script src="lib/lightgallery.js/dist/plugins/autoplay/lg-autoplay.min.js"></script>
 	<script src="lib/lightgallery.js/dist/plugins/fullscreen/lg-fullscreen.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.3/showdown.min.js"></script>
+
+	<script src="https://apis.google.com/js/api.js"></script>
+
+	<script>
+		// Khởi tạo và tải Google Sheets API
+		function init() {
+		  gapi.load('client', fetchSheetData);
+		}
+	
+		// Lấy dữ liệu từ Google Sheets API
+		function fetchSheetData() {
+		  gapi.client.init({
+			apiKey: 'AIzaSyCEb07NnjYVSjOFs3feUVJkZTwIVyI3ayw',
+			discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+		  }).then(() => {
+			return gapi.client.sheets.spreadsheets.values.get({
+			  spreadsheetId: '1fQOnwetWGiCuKW5D7sEBD3tcE5WUyHZgZmMKzCAbCl8',
+			  range: 'Sheet1',
+			});
+		  }).then((response) => {
+			const data = response.result.values;
+			displayData(data);
+		  }).catch((error) => {
+			console.error('Error fetching data:', error);
+		  });
+		}
+	
+		// Hiển thị dữ liệu lấy từ Google Sheets API trong bảng HTML
+		function displayData(data) {
+		  const tableBody = document.querySelector('#data-table tbody');
+	
+		  data.forEach((row) => {
+			const newRow = document.createElement('tr');
+			row.forEach((cell) => {
+			  const newCell = document.createElement('td');
+			  newCell.textContent = cell;
+			  newRow.appendChild(newCell);
+			});
+			tableBody.appendChild(newRow);
+		  });
+		}
+	
+		// Gọi hàm khởi tạo
+		init();
+	  </script>
+
+	<script>
+		function saveData(event) {
+		event.preventDefault();
+
+		// Lấy giá trị từ các trường form
+		const name = document.getElementById('name').value;
+		const chuc = document.getElementById('chuc').value;
+
+		// Gọi hàm lưu dữ liệu vào Google Sheets
+		saveToGoogleSheets(name, chuc);
+
+		document.getElementById('name').value = "";
+		document.getElementById('chuc').value = "";
+		}
+
+		function saveToGoogleSheets(name, chuc) {
+			console.log("========saveToGoogleSheets: " + name + chuc)
+		gapi.load('client', () => {
+			gapi.client.init({
+			apiKey: 'AIzaSyCEb07NnjYVSjOFs3feUVJkZTwIVyI3ayw',
+			discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+			}).then(() => {
+			return gapi.client.sheets.spreadsheets.values.append({
+				spreadsheetId: '1fQOnwetWGiCuKW5D7sEBD3tcE5WUyHZgZmMKzCAbCl8',
+				range: 'Sheet1!A1',
+				valueInputOption: 'USER_ENTERED',
+				resource: {
+				values: [[name, chuc]]
+				}
+			});
+			}).then((response) => {
+			console.log('Data saved:', response);
+			// Thực hiện các thao tác khác sau khi dữ liệu đã được lưu thành công
+			}).catch((error) => {
+			console.error('Error saving data:', error);
+			// Xử lý lỗi khi không thể lưu dữ liệu
+			});
+		});
+		}
+	</script>
+
+
 
 	<script>
 		day = 23; month = 9 - 1; year = 2023;
@@ -912,7 +1009,7 @@
 		}
 	</script>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		const lgContainer = document.getElementById('inline-gallery-container');
 		const inlineGallery = lightGallery(lgContainer, {
 			container: lgContainer,
@@ -1003,7 +1100,7 @@
 
 		// Since we are using dynamic mode, we need to programmatically open lightGallery
 		inlineGallery.openGallery();
-	</script>
+	</script> -->
 
 </body>
 
