@@ -8,7 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>The Wedding of Rehan & Maulidan</title>
+	<title>The Wedding of Tấn Tài & Phương Thảo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="The Wedding of Tài & Thảo" />
 	<meta name="keywords" content="wedding, wedding invitation, invitation, the wedding" />
@@ -822,43 +822,43 @@
 
 	<script>
 		function saveData(event) {
-		event.preventDefault();
+		// event.preventDefault();
 
-		// Lấy giá trị từ các trường form
-		const name = document.getElementById('name').value;
-		const chuc = document.getElementById('chuc').value;
+		// // Lấy giá trị từ các trường form
+		// const name = document.getElementById('name').value;
+		// const chuc = document.getElementById('chuc').value;
 
-		// Gọi hàm lưu dữ liệu vào Google Sheets
-		saveToGoogleSheets(name, chuc);
+		// // Gọi hàm lưu dữ liệu vào Google Sheets
+		// saveToGoogleSheets(name, chuc);
 
-		document.getElementById('name').value = "";
-		document.getElementById('chuc').value = "";
+		// document.getElementById('name').value = "";
+		// document.getElementById('chuc').value = "";
 		}
 
-		function saveToGoogleSheets(name, chuc) {
-			console.log("========saveToGoogleSheets: " + name + chuc)
-		gapi.load('client', () => {
-			gapi.client.init({
-			apiKey: 'AIzaSyCEb07NnjYVSjOFs3feUVJkZTwIVyI3ayw',
-			discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-			}).then(() => {
-			return gapi.client.sheets.spreadsheets.values.append({
-				spreadsheetId: '1fQOnwetWGiCuKW5D7sEBD3tcE5WUyHZgZmMKzCAbCl8',
-				range: 'Sheet1!A1',
-				valueInputOption: 'USER_ENTERED',
-				resource: {
-				values: [[name, chuc]]
-				}
-			});
-			}).then((response) => {
-			console.log('Data saved:', response);
-			// Thực hiện các thao tác khác sau khi dữ liệu đã được lưu thành công
-			}).catch((error) => {
-			console.error('Error saving data:', error);
-			// Xử lý lỗi khi không thể lưu dữ liệu
-			});
-		});
-		}
+		// function saveToGoogleSheets(name, chuc) {
+		// console.log("========saveToGoogleSheets: " + name + chuc)
+		// gapi.load('client', () => {
+		// 	gapi.client.init({
+		// 	apiKey: 'AIzaSyCEb07NnjYVSjOFs3feUVJkZTwIVyI3ayw',
+		// 	discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+		// 	}).then(() => {
+		// 	return gapi.client.sheets.spreadsheets.values.append({
+		// 		spreadsheetId: '1fQOnwetWGiCuKW5D7sEBD3tcE5WUyHZgZmMKzCAbCl8',
+		// 		range: 'Sheet1!A1',
+		// 		valueInputOption: 'USER_ENTERED',
+		// 		resource: {
+		// 		values: [[name, chuc]]
+		// 		}
+		// 	});
+		// 	}).then((response) => {
+		// 	console.log('Data saved:', response);
+		// 	// Thực hiện các thao tác khác sau khi dữ liệu đã được lưu thành công
+		// 	}).catch((error) => {
+		// 	console.error('Error saving data:', error);
+		// 	// Xử lý lỗi khi không thể lưu dữ liệu
+		// 	});
+		// });
+		// }
 	</script>
 
 
