@@ -1,5 +1,5 @@
 $font-primary: 'Work Sans', Arial, sans-serif;
-$font-secondary: 'Sacramento', Arial, serif;
+$font-secondary: 'Work Sans', Arial, serif;
 
 
 // Overrides
@@ -489,7 +489,7 @@ h1, h2, h3, h4, h5, h6, figure {
 			padding-bottom: 20px;
 			text-transform: uppercase;
 			letter-spacing: 2px;
-			font-family: "Sacramento", Arial, serif;
+			font-family: "Work Sans", Arial, serif;
 			font-weight: bold;
 		}
 		p,span{
@@ -541,7 +541,7 @@ h1, h2, h3, h4, h5, h6, figure {
 		line-height: 1.5;
 		font-weight: normal;
 		color: #113468;
-		font-family: "Sacramento", Arial, serif;
+		font-family: "Work Sans", Arial, serif;
 
 		@media screen and (max-width: $screen-xs) {
 			font-size: 38px;
@@ -587,7 +587,7 @@ h1, h2, h3, h4, h5, h6, figure {
 			line-height: 1.5;
 			font-weight: normal;
 			color: #0298d4;
-			font-family: "Sacramento", Arial, serif;
+			font-family: "Work Sans", Arial, serif;
 
 			@media screen and (max-width: $screen-xs) {
 				font-size: 38px;
