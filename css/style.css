@@ -73,8 +73,8 @@
 }
 
 .slider__content h1 {
-  font-weight: 900;
-  font-size: 9vh;
+  font-weight: 700;
+  font-size: 3vh;
   line-height: 0.85;
   margin-bottom: 0.75vh;
   pointer-events: none;
@@ -216,15 +216,33 @@
   }
 }
 .slider__slide:nth-child(1) .slider__back, .slider__slide:nth-child(1) .slider__inner {
-  background-image: url(https://taithaowedding.click/images/gallery/2.jpg);
-}
-.slider__slide:nth-child(2) .slider__back, .slider__slide:nth-child(2) .slider__inner {
-  background-image: url(https://taithaowedding.click/images/gallery/6.jpg);
-}
-.slider__slide:nth-child(3) .slider__back, .slider__slide:nth-child(3) .slider__inner {
-  background-image: url(https://taithaowedding.click/images/gallery/11.jpg);
+  background-image: url(https://taithaowedding.click/images/gallery/1.jpg);
 }
 
+@media screen and (max-width: 768px) {
+  .slider__slide:nth-child(1) .slider__back, .slider__slide:nth-child(1) .slider__inner {
+    background-image: url(https://taithaowedding.click/images/gallery/9.jpg);
+  }
+}
+
+.slider__slide:nth-child(2) .slider__back, .slider__slide:nth-child(2) .slider__inner {
+  background-image: url(https://taithaowedding.click/images/gallery/3.jpg);
+}
+
+@media screen and (max-width: 768px) {
+  .slider__slide:nth-child(2) .slider__back, .slider__slide:nth-child(2) .slider__inner {
+    background-image: url(https://taithaowedding.click/images/gallery/6.jpg);
+  }
+}
+.slider__slide:nth-child(3) .slider__back, .slider__slide:nth-child(3) .slider__inner {
+  background-image: url(https://taithaowedding.click/images/gallery/8.jpg);
+}
+
+@media screen and (max-width: 768px) {
+  .slider__slide:nth-child(3) .slider__back, .slider__slide:nth-child(3) .slider__inner {
+    background-image: url(https://taithaowedding.click/images/gallery/11.jpg);
+  }
+}
 .sig {
   position: fixed;
   bottom: 8px;
