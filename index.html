@@ -100,9 +100,9 @@
 					<div class="slider__back"></div>
 				</div>
 				<div class="slider__inner">
-					<div class="slider__content" style="position: relative; top: 100%; left: 20%;">
-						<h1 style="font-family: 'WindSong';">Đám cưới của: </h1>
-						<a style="font-family: 'WindSong';  font-size: medium" class="go-to-next">Next</a>
+					<div class="slider__content">
+						<!-- <h1 style="font-family: 'WindSong';">Đám cưới của: </h1> -->
+						<!-- <a style="font-family: 'WindSong';  font-size: medium" class="go-to-next">Next</a> -->
 					</div>
 				</div>
 			</div>
@@ -112,11 +112,8 @@
 				</div>
 				<div class="slider__inner">
 					<div class="slider__content">
-						<div style="margin-top: 100px; margin-left: -30px;">
-							<h2 style="font-family: 'WindSong'">Tấn Tài &amp;</br>Phương Thảo</h2>
-							<a style="font-family: 'WindSong'; font-size: medium;" class="go-to-next">Next</a>
-						</div>
-						
+						<!-- <h2 style="font-family: 'WindSong'">Tấn Tài &amp;</br>Phương Thảo</h2> -->
+						<!-- <a style="font-family: 'WindSong'; font-size: medium;" class="go-to-next">Next</a> -->
 					</div>
 				</div>
 			</div>
@@ -125,14 +122,15 @@
 					<div class="slider__back"></div>
 				</div>
 				<div class="slider__inner">
-					<div class="slider__content" style="position: absolute; top: 30%; left: 10%;">
-						<h3 style="color: #c07622; line-height: 1cm;">Chúng tôi hy vọng bạn sẽ là một phần trong ngày đặc biệt này.</h3>
-						<a style="font-family: 'WindSong'; font-size: medium;" class="go-to-next">Next</a>
+					<div class="slider__content">
 					</div>
 				</div>
 			</div>
 			<div class="slider__indicators"></div>
-		</div><a class="sig" href="" target="_blank">Tấn Tài & Phương Thảo</a>
+		</div>
+		<p class="prevButton" style="font-family: 'WindSong'; font-size: large; font-weight: 900;">Về</br>trước</p>
+		<p class="nextButton" style="font-family: 'WindSong'; font-size: large; font-weight: 900;">Tiếp</br>Theo</p>
+		<a class="sig" href="" target="_blank">Tấn Tài & Phương Thảo</a>
 
 		<!-- <div class="overlay"></div>
 			<div class="container">
@@ -230,6 +228,7 @@
 					</div>
 				</div>
 			</div> -->
+
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 							<div class="container-avatar">
@@ -239,6 +238,7 @@
 									</a>
 								</div>
 							</div>
+							<h2 style="font-family: 'WindSong'; font-size: 4vh;">Đám cưới của: </h2>
 							<h1 style="font-family: 'WindSong', Arial, serif; margin-top: 30px;">Tấn Tài & Phương Thảo
 							</h1>
 							<h3>Đếm ngược: </h3>
@@ -347,6 +347,21 @@
 										class="btn btn-primary">Chỉ
 										đường</a>
 								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center">
+							<div style="margin-top: 50px;">
+								<!-- <div class="display-tc"> -->
+								<a style="font-family: 'Playfair Display'; font-weight: '400italic'; "
+									href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MzlqZnNnb200c2tydGFhZjFpc2I3c3ZsNzIgZGFuZ3RhbnRhaWJrQG0&tmsrc=dangtantaibk%40gmail.com"
+									target="_blank" class="btn btn-primary btn-sm">Lưu lại lịch</a><br>
+								<h4 style="color: #113468; line-height: 1cm;">*Nhấp vào nút này để lưu ngày trên lịch
+									google</h4>
+
+								<!-- </div> -->
 							</div>
 						</div>
 					</div>
@@ -705,10 +720,20 @@
 				);
 			}
 
-			$(".slider__next, .go-to-next").on("click", function () {
+			$(".slider__next, .nextButton").on("click", function () {
 				var currentSlide = Number($(".slider__slide--active").data("slide"));
 				var totalSlides = $(".slider__slide").length;
 				currentSlide++;
+				if (currentSlide > totalSlides) {
+					currentSlide = 1;
+				}
+				goToSlide(currentSlide);
+			});
+
+			$(".slider__next, .prevButton").on("click", function () {
+				var currentSlide = Number($(".slider__slide--active").data("slide"));
+				var totalSlides = $(".slider__slide").length;
+				currentSlide--;
 				if (currentSlide > totalSlides) {
 					currentSlide = 1;
 				}
