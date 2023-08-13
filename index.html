@@ -734,8 +734,8 @@
 				var currentSlide = Number($(".slider__slide--active").data("slide"));
 				var totalSlides = $(".slider__slide").length;
 				currentSlide--;
-				if (currentSlide > totalSlides) {
-					currentSlide = 1;
+				if (currentSlide > 1) {
+					currentSlide = totalSlides;
 				}
 				goToSlide(currentSlide);
 			});
