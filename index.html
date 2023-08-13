@@ -85,14 +85,20 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 </head>
 
 <body>
-
+	
 	<div class="fh5co-loader"></div>
 	<div id="page">
-		<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_new.jpg);">
+		<header id="fh5co-header" 
+		class="fh5co-cover" 
+		role="banner" 
+		style="background-image:url(images/img_bg.jpg);
+			background-size: cover; 
+			background-repeat: no-repeat; /* Prevent image from repeating */
+			background-position: right; /* Center the image */
+		">
 			<!-- <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg.jpg);"
 			data-stellar-background-ratio="0.5"> -->
 			<div class="overlay"></div>
@@ -103,7 +109,7 @@
 							<div class="display-tc">
 								<!-- <div class="display-tc animate-box" data-animate-effect="fadeIn"></div> -->
 								
-								<h2 style="font-family: 'Playfair Display'; font-size: xx-large;">Lễ Thành Hôn</h2>
+								<h2 style="font-family: 'WindSong';">Lễ Thành Hôn</h2>
 								<h1 style="font-family: 'WindSong'">Tấn Tài &amp;</br>Phương Thảo</h1>
 								<h3 style="color: #bf9b73; line-height: 1cm;">Chúng tôi hy vọng bạn sẽ là một phần trong ngày đặc biệt này.</h3>
 								<!-- <p> -->
@@ -123,7 +129,9 @@
 		<div id="floating-button" class="float">
 			<div class="control-center open">
 				<div class="audio-play">
-					<div data-video="QZng89VxKWg" data-autoplay="0" data-loop="1" id="youtube-audio1"></div>
+					<div id="player" onclick="toggleAudio()">
+						<img id="player-icon" src="images/audio/play.png"/>
+					</div>
 				</div>
 				<ul class="right-sidebar">
 					<!--gallery-->
@@ -163,7 +171,7 @@
 					</div> -->
 				</div>
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<!-- <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 						<img src="images/couple-7.jpg" alt="" class="couple-main" style="
 						-webkit-border-radius: 50%;
 						-moz-border-radius: 50%;
@@ -171,6 +179,15 @@
 						border-radius: 50%;
 						width: 300px;
 						height: 300px;">
+					</div> -->
+
+					<div class="slider">
+						<div class="containerslider">
+							<div class="slide x"></div>
+							<div class="slide y"></div>
+							<div class="slide z"></div>
+						</div>
+						<div class="shadow"></div>
 					</div>
 				</div>
 				<div class="row">
@@ -178,11 +195,6 @@
 						<h1 style="font-family: 'WindSong', Arial, serif; margin-top: 30px;">Tấn Tài & Phương Thảo</h1>
 						<h3>Đếm ngược: </h3>
 						<div class="simply-countdown simply-countdown-wedding"></div>
-						<!-- <p>
-							<a href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MzlqZnNnb200c2tydGFhZjFpc2I3c3ZsNzIgZGFuZ3RhbnRhaWJrQG0&tmsrc=dangtantaibk%40gmail.com"
-								target="_blank" class="btn btn-primary btn-sm">Lưu lại lịch</a><br>
-							<i style="font-size: 15px">*Nhấp vào nút này để lưu ngày trên lịch google</i>
-						</p> -->
 					</div>
 				</div>
 			</div>
@@ -492,6 +504,8 @@
 			</div>
 		</div>
 
+
+
 		<footer id="fh5co-footer" role="contentinfo"
 			style="background: url('images/background/repeat-background/witewall_3.png'); background-repeat:repeat ">
 			<div class="container">
@@ -514,6 +528,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -544,94 +559,6 @@
 	<script src="lib/lightgallery.js/dist/plugins/autoplay/lg-autoplay.min.js"></script>
 	<script src="lib/lightgallery.js/dist/plugins/fullscreen/lg-fullscreen.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.3/showdown.min.js"></script>
-
-	<script src="https://apis.google.com/js/api.js"></script>
-
-	<script>
-		// Khởi tạo và tải Google Sheets API
-		function init() {
-		  gapi.load('client', fetchSheetData);
-		}
-	
-		// Lấy dữ liệu từ Google Sheets API
-		function fetchSheetData() {
-		  gapi.client.init({
-			apiKey: 'AIzaSyCEb07NnjYVSjOFs3feUVJkZTwIVyI3ayw',
-			discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-		  }).then(() => {
-			return gapi.client.sheets.spreadsheets.values.get({
-			  spreadsheetId: '1fQOnwetWGiCuKW5D7sEBD3tcE5WUyHZgZmMKzCAbCl8',
-			  range: 'Sheet1',
-			});
-		  }).then((response) => {
-			const data = response.result.values;
-			displayData(data);
-		  }).catch((error) => {
-			console.error('Error fetching data:', error);
-		  });
-		}
-	
-		// Hiển thị dữ liệu lấy từ Google Sheets API trong bảng HTML
-		function displayData(data) {
-		  const tableBody = document.querySelector('#data-table tbody');
-	
-		  data.forEach((row) => {
-			const newRow = document.createElement('tr');
-			row.forEach((cell) => {
-			  const newCell = document.createElement('td');
-			  newCell.textContent = cell;
-			  newRow.appendChild(newCell);
-			});
-			tableBody.appendChild(newRow);
-		  });
-		}
-	
-		// Gọi hàm khởi tạo
-		init();
-	  </script>
-
-	<script>
-		function saveData(event) {
-		// event.preventDefault();
-
-		// // Lấy giá trị từ các trường form
-		// const name = document.getElementById('name').value;
-		// const chuc = document.getElementById('chuc').value;
-
-		// // Gọi hàm lưu dữ liệu vào Google Sheets
-		// saveToGoogleSheets(name, chuc);
-
-		// document.getElementById('name').value = "";
-		// document.getElementById('chuc').value = "";
-		}
-
-		// function saveToGoogleSheets(name, chuc) {
-		// console.log("========saveToGoogleSheets: " + name + chuc)
-		// gapi.load('client', () => {
-		// 	gapi.client.init({
-		// 	apiKey: 'AIzaSyCEb07NnjYVSjOFs3feUVJkZTwIVyI3ayw',
-		// 	discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-		// 	}).then(() => {
-		// 	return gapi.client.sheets.spreadsheets.values.append({
-		// 		spreadsheetId: '1fQOnwetWGiCuKW5D7sEBD3tcE5WUyHZgZmMKzCAbCl8',
-		// 		range: 'Sheet1!A1',
-		// 		valueInputOption: 'USER_ENTERED',
-		// 		resource: {
-		// 		values: [[name, chuc]]
-		// 		}
-		// 	});
-		// 	}).then((response) => {
-		// 	console.log('Data saved:', response);
-		// 	// Thực hiện các thao tác khác sau khi dữ liệu đã được lưu thành công
-		// 	}).catch((error) => {
-		// 	console.error('Error saving data:', error);
-		// 	// Xử lý lỗi khi không thể lưu dữ liệu
-		// 	});
-		// });
-		// }
-	</script>
-
-
 
 	<script>
 		day = 23; month = 9 - 1; year = 2023;
@@ -671,206 +598,30 @@
 			// }
 		});
 
-		$.get("https://api.github.com/repos/ngodingsolusi/the-wedding-of-rehan-maulidan/issues?state=all&per_page", function (data) {
-			for (let i = 0; i < data.length; i++) {
-				const item = `
-				<a class="list-group-item">
-					<div class="name"><span class="strong" style="font-size: 24px">${data[i].user.login}</span> <span class="label label-success">${data[i].labels.length > 0 ? data[i].labels[0].name : 'Tanpa Keterangan'}</span></div>
-					<hr style="margin-top: 0;">
-					<div class="comment">${new showdown.Converter().makeHtml(data[i].body)}</div>
-				</a>
-			`;
-
-				$("#fh5co-testimonial .list-group").append(item);
-			}
-		});
-
 		function scrollToElement(el) {
 			$("html, body").animate({ scrollTop: $(`#${el}`).offset().top }, 1000);
 		}
 	</script>
 
 	<script>
-		// 2. This code loads the IFrame Player API code asynchronously.
-		var tag = document.createElement('script');
-
-		tag.src = "https://www.youtube.com/iframe_api";
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-		// 3. This function creates an <iframe> (and YouTube player)
-		//    after the API code downloads.
-		var player1;
-		function onYouTubeIframeAPIReady() {
-
-			var ctrlq1 = document.getElementById("youtube-audio1");
-			ctrlq1.innerHTML = '<img id="youtube-icon1" src=""/><div id="youtube-player1"></div>';
-			ctrlq1.style.cssText = 'width:20px;margin:0 auto;cursor:pointer;cursor:hand;display:none';
-			ctrlq1.onclick = toggleAudio1;
-
-			player1 = new YT.Player('youtube-player1', {
-				height: '0',
-				width: '0',
-				videoId: ctrlq1.dataset.video,
-				playerVars: {
-					autoplay: ctrlq1.dataset.autoplay,
-					loop: ctrlq1.dataset.loop,
-				},
-				events: {
-					'onReady': onPlayerReady1,
-					'onStateChange': onPlayerStateChange1
-				}
-			});
-		}
-
-		function togglePlayButton1(play) {
-			document.getElementById("youtube-icon1").src = play ? "https://ngodingsolusi.github.io/the-wedding-of-rehan-maulidan/images/audio/pause.png" : "https://ngodingsolusi.github.io/the-wedding-of-rehan-maulidan/images/audio/play.png";
-		}
-
-		function toggleAudio1() {
-			if (player1.getPlayerState() == 1 || player1.getPlayerState() == 3) {
-				player1.pauseVideo();
-				togglePlayButton1(false);
+		let isPlay = false;
+		let audio = new Audio('music/wedding.mp3');
+		function toggleAudio() {
+			const player = document.getElementById('player');
+			const playButton = document.getElementById('player-icon');
+			
+			console.log("=======isPlay========:" + isPlay)
+			if (!isPlay) {
+				playButton.src = "images/audio/pause.png";
+				audio.play();
 			} else {
-				player1.playVideo();
-				togglePlayButton1(true);
+				playButton.src = "images/audio/play.png";
+				audio.pause();
 			}
-		}
-
-		function playAudio1() {
-			if (!(player1.getPlayerState() == 1 || player1.getPlayerState() == 3)) {
-				player1.playVideo();
-				togglePlayButton1(true);
-			}
-		}
-
-		function onPlayerReady1(event) {
-			player1.setPlaybackQuality("small");
-			document.getElementById("youtube-audio1").style.display = "block";
-			togglePlayButton1(player1.getPlayerState() !== 5);
-		}
-
-		function onPlayerStateChange1(event) {
-			if (event.data === 0) {
-				togglePlayButton1(false);
-			}
+			isPlay = !isPlay;
 		}
 	</script>
-
-	<script>
-		function akadLocation() {
-			// If it's an iPhone..
-			if ((navigator.platform.indexOf("iPhone") != -1)
-				|| (navigator.platform.indexOf("iPod") != -1)
-				|| (navigator.platform.indexOf("iPad") != -1))
-				window.open("maps://www.google.com/maps?daddr=masjid+keuchik+leumik");
-			else
-				window.open("https://www.google.com/maps?daddr=masjid+keuchik+leumik");
-		}
-
-		function walimahLocation() {
-			// If it's an iPhone..
-			if ((navigator.platform.indexOf("iPhone") != -1)
-				|| (navigator.platform.indexOf("iPod") != -1)
-				|| (navigator.platform.indexOf("iPad") != -1))
-				window.open("maps://www.google.com/maps?daddr=Amel+Convention+Hall");
-			else
-				window.open("https://www.google.com/maps?daddr=Amel+Convention+Hall");
-		}
-	</script>
-
-	<!-- <script type="text/javascript">
-		const lgContainer = document.getElementById('inline-gallery-container');
-		const inlineGallery = lightGallery(lgContainer, {
-			container: lgContainer,
-			dynamic: true,
-			thumbnail: true,
-			// Turn off hash plugin in case if you are using it
-			// as we don't want to change the url on slide change
-			hash: false,
-			// Do not allow users to close the gallery
-			closable: false,
-			// Add maximize icon to enlarge the gallery
-			showMaximizeIcon: true,
-			download: false,
-			// Append caption inside the slide item
-			// to apply some animation for the captions (Optional)
-			appendSubHtmlTo: '.lg-item',
-			// Delay slide transition to complete captions animations
-			// before navigating to different slides (Optional)
-			// You can find caption animation demo on the captions demo page
-			slideDelay: 400,
-			dynamicEl: [
-				{
-					src: 'images/gallery/20211107182627_IMG_5230.jpg-1024x.jpg',
-					thumb: 'images/gallery/20211107182627_IMG_5230.jpg-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/IMG_9958.JPG-1024x.jpg',
-					thumb: 'images/gallery/IMG_9958.JPG-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/molid.jpg-1024x.jpg',
-					thumb: 'images/gallery/molid.jpg-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/rehan.jpg-1024x.jpg',
-					thumb: 'images/gallery/rehan.jpg-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/ring-3.JPG-1024x.jpg',
-					thumb: 'images/gallery/ring-3.JPG-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/20211107181957_IMG_5207.jpg-1024x.jpg',
-					thumb: 'images/gallery/20211107181957_IMG_5207.jpg-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/IMG_9797.JPG-1024x.jpg',
-					thumb: 'images/gallery/IMG_9797.JPG-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/IMG_9802.JPG-1024x.jpg',
-					thumb: 'images/gallery/IMG_9802.JPG-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				}, {
-					src: 'images/gallery/IMG_9787-1024x.jpg',
-					thumb: 'images/gallery/IMG_9787-1024x.jpg',
-					/*subHtml: `<div class="lightGallery-captions">
-						<h4>Caption 1</h4>
-						<p>Description of the slide 1</p>
-					</div>`,*/
-				},
-			],
-		});
-
-		// Since we are using dynamic mode, we need to programmatically open lightGallery
-		inlineGallery.openGallery();
-	</script> -->
+	<!-- (navigator.platform.indexOf("iPhone") != -1) -->
 
 </body>
 
