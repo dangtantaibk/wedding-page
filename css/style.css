@@ -10,23 +10,23 @@
 * 	Template Style
 *
 * ======================================================= */
-@font-face {
+/* @font-face {
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCIPrQ.ttf) format('truetype');
-}
-:root,
+} */
+/* :root,
 button {
   font-family: 'Raleway', serif;
-}
-* {
+} */
+/* * {
   box-sizing: border-box;
 }
 .color {
   background: linear-gradient(to right, #e1e0ff, #d7fadd);
-}
-body {
+} */
+/* body {
   background: #191919;
   background: white;
   -webkit-user-select: none;
@@ -35,19 +35,19 @@ body {
           user-select: none;
   letter-spacing: 3px;
   color: #b9b9b9;
-}
-h1 {
+} */
+/* h1 {
   padding-bottom: 40px;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 16px;
-}
-p {
+} */
+/* p {
   padding-bottom: 15px;
 }
 p:last-of-type {
   padding-bottom: 0;
-}
+} */
 .try-again {
   cursor: pointer;
   position: relative;
@@ -160,7 +160,8 @@ p:last-of-type {
   width: 400px;
   flex-shrink: 0;
   border-radius: 3px;
-  position: relative;
+  position: fixed;
+  top: 50%;
   z-index: 3;
   display: flex;
   align-items: center;
