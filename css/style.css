@@ -244,7 +244,7 @@
   }
 }
 .sig {
-  position: fixed;
+  position: absolute;
   bottom: 8px;
   right: 8px;
   text-decoration: none;
@@ -257,28 +257,28 @@
 }
 
 .nextButton {
-  position: fixed;
+  position: absolute;
   bottom: 50%;
   right: 8px;
   text-decoration: none;
   font-size: 12px;
   font-weight: 100;
   font-family: sans-serif;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 7px;
   z-index: 9999;
 }
 
 .prevButton {
-  position: fixed;
+  position: absolute;
   bottom: 50%;
   left: 8px;
   text-decoration: none;
   font-size: 12px;
   font-weight: 100;
   font-family: sans-serif;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 7px;
   z-index: 9999;
 }
 
