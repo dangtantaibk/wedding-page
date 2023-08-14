@@ -159,9 +159,11 @@ p:last-of-type {
   height: 400px;
   width: 400px;
   flex-shrink: 0;
-  border-radius: 3px;
+  border-radius: 30px;
   position: fixed;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 3;
   display: flex;
   align-items: center;
@@ -178,6 +180,7 @@ p:last-of-type {
   border-radius: 50%;
   box-shadow: 0 0 0 black;
   transition: box-shadow 0.5s ease 0.7s, border-radius 0.35s ease 0.7s;
+  border-radius: 30px;
 }
 .backgrounds {
   position: absolute;
@@ -186,6 +189,7 @@ p:last-of-type {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  border-radius: 30px;
 }
 .background {
   --offset: 0;
@@ -209,6 +213,7 @@ p:last-of-type {
   background: linear-gradient(to right, #6665ff, #69fa7f);
   transform: scale(0);
   transition: all 0.5s ease 0.1s;
+  border-radius: 30px;
 }
 .background3 {
   --offset: 20%;
@@ -220,6 +225,7 @@ p:last-of-type {
   background: linear-gradient(to right, #8583ff, #85fa99);
   z-index: 2;
   transition: all 0.5s ease 0.2s;
+  border-radius: 30px;
 }
 .background4 {
   --offset: 30%;
@@ -231,6 +237,7 @@ p:last-of-type {
   background: linear-gradient(to right, #aaaaff, #a7fab7);
   z-index: 3;
   transition: all 0.5s ease 0.3s;
+  border-radius: 30px;
 }
 .background5 {
   --offset: 40%;
@@ -242,6 +249,7 @@ p:last-of-type {
   background: linear-gradient(to right, #c9c8ff, #c3fad1);
   z-index: 4;
   transition: all 0.5s ease 0.4s;
+  border-radius: 30px;
 }
 .background6 {
   --offset: 40%;
@@ -253,6 +261,7 @@ p:last-of-type {
   background: white;
   z-index: 5;
   transition: all 0.8s ease 0.4s;
+  border-radius: 30px;
 }
 .content {
   --offset: 0;
@@ -267,9 +276,10 @@ p:last-of-type {
   opacity: 0;
   transition: all 0.35s ease 0.75s;
   z-index: 10;
+  border-radius: 30;
 }
 .content-wrapper {
-  text-align: center;
+  text-align: start;
 }
 body.active .content {
   opacity: 1;
