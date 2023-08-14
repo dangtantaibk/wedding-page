@@ -215,8 +215,13 @@
     opacity: 1;
   }
 }
+
+.element {
+  cursor: pointer;
+}
+
 .slider__slide:nth-child(1) .slider__back, .slider__slide:nth-child(1) .slider__inner {
-  background-image: url(https://taithaowedding.click/images/gallery/1.jpg);
+  background-image: url(https://taithaowedding.click/images/gallery/8.jpg);
 }
 
 @media screen and (max-width: 768px) {
@@ -235,7 +240,7 @@
   }
 }
 .slider__slide:nth-child(3) .slider__back, .slider__slide:nth-child(3) .slider__inner {
-  background-image: url(https://taithaowedding.click/images/gallery/8.jpg);
+  background-image: url(https://taithaowedding.click/images/gallery/1.jpg);
 }
 
 @media screen and (max-width: 768px) {
@@ -243,6 +248,38 @@
     background-image: url(https://taithaowedding.click/images/gallery/11.jpg);
   }
 }
+
+.slider__slide:nth-child(4) .slider__back, .slider__slide:nth-child(4) .slider__inner {
+  background-image: url(https://taithaowedding.click/images/gallery/4.jpg);
+}
+
+@media screen and (max-width: 768px) {
+  .slider__slide:nth-child(4) .slider__back, .slider__slide:nth-child(4) .slider__inner {
+    background-image: url(https://taithaowedding.click/images/gallery/9.jpg);
+  }
+}
+
+.slider__slide:nth-child(5) .slider__back, .slider__slide:nth-child(5) .slider__inner {
+  background-image: url(https://taithaowedding.click/images/gallery/7.jpg);
+}
+
+@media screen and (max-width: 768px) {
+  .slider__slide:nth-child(5) .slider__back, .slider__slide:nth-child(5) .slider__inner {
+    background-image: url(https://taithaowedding.click/images/gallery/13.jpg);
+  }
+}
+
+.slider__slide:nth-child(6) .slider__back, .slider__slide:nth-child(6) .slider__inner {
+  background-image: url(https://taithaowedding.click/images/gallery/11.jpg);
+}
+
+@media screen and (max-width: 768px) {
+  .slider__slide:nth-child(6) .slider__back, .slider__slide:nth-child(6) .slider__inner {
+    background-image: url(https://taithaowedding.click/images/gallery/14.jpg);
+  }
+}
+
+
 .sig {
   position: absolute;
   bottom: 8px;
@@ -259,7 +296,7 @@
 .nextButton {
   position: absolute;
   bottom: 50%;
-  right: 8px;
+  right: 18px;
   text-decoration: none;
   font-size: 12px;
   font-weight: 100;
@@ -2617,8 +2654,8 @@ fadeIn {  from {
     height: 200px;
   }
   .flower-3-top{
-    height: 200px;
-    bottom: 40px;
+    height: 20px;
+    bottom: 10px;
     top: 5%
   }
   .flower-4-bottom{
