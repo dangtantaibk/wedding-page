@@ -98,14 +98,14 @@ p:last-of-type {
   align-items: center;
   justify-content: center;
   /* border: 1px solid rgba(0, 0, 0, 0.06); */
-  border-radius: 0px;
+  border-radius: 10px;
   box-shadow: 0 0 0 white, 0 0 0 white;
 }
 .button-text {
   display: inline-block;
   position: relative;
   z-index: 2;
-  background: linear-gradient(to right, #504bff, #4cfa63);
+  background: linear-gradient(to right, #0e0d35, #39ceff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -2758,7 +2758,7 @@ form label {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 30px;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAhUlEQVRIie2U0QmAMAxEE3EMcRIdQAdxUXGSDPL8ESmlasUWKfR9hssduY+I/AWwAWsqXWgRgK+6xhPPgLkLPODpDJhcT/UCTES6iAPvMFXtrwIeK4lBVU/f5k6YguwBbWjonviGUMXlV1QDakCpAcDw1ggYQ/Ps79q/YBER+2J+eFTi2QH5gHBCJs9nEQAAAABJRU5ErkJggg==);
+  background-image: url('https://taithaowedding.click/images/calendar.svg');
 }
 
 .option-btn.open:after {
