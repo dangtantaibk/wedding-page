@@ -565,68 +565,21 @@
 					<div class="row animate-box">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 							<h2>Sổ lưu bút</h2>
-							<span style="color: #bf9b73">Lời cầu nguyện chúc phúc của bạn là một món quà có ý nghĩa rất
-								lớn
-								đối với chúng tôi.</span>
+							<span style="color: #bf9b73">Những lời chúc phúc của mọi người là một món quà có ý nghĩa rất
+								lớn đối với chúng mình.</span>
 						</div>
 					</div>
-					<!-- <table id="data-table">
-				<thead>
-					<tr>
-					<th>Tên</th>
-					<th>Lời chúc</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-				</table> -->
+					
 					<div class="row">
 						<div class="col-md-12 animate-box">
-							<div class="wrap-testimony">
+							<iframe style="width: 100%; height: 500px" src="testimonial.html"></iframe>
+							<!-- <div class="wrap-testimony" >
 								<div class="owl-carousel-fullwidth">
-									<div class="item">
-										<div class="testimony-slide active text-center">
-											<figure>
-												<!-- <img src="images/couple-1.jpg" alt="user"> -->
-											</figure>
-											<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-											<blockquote>
-												<p>"Far far away, behind the word mountains, far from the countries
-													Vokalia
-													and Consonantia, there live the blind texts. Separated they live in
-													Bookmarksgrove right at the coast of the Semantics"</p>
-											</blockquote>
-										</div>
+									<div class="item" id="data-list-1">
 									</div>
-									<div class="item">
-										<div class="testimony-slide active text-center">
-											<figure>
-												<img src="images/couple-2.jpg" alt="user">
-											</figure>
-											<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-											<blockquote>
-												<p>"Far far away, behind the word mountains, far from the countries
-													Vokalia
-													and Consonantia, at the coast of the Semantics, a large language
-													ocean."
-												</p>
-											</blockquote>
-										</div>
+									<div class="item" id="data-list-2">
 									</div>
-									<div class="item">
-										<div class="testimony-slide active text-center">
-											<figure>
-												<img src="images/couple-3.jpg" alt="user">
-											</figure>
-											<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-											<blockquote>
-												<p>"Far far away, far from the countries Vokalia and Consonantia, there
-													live
-													the blind texts. Separated they live in Bookmarksgrove right at the
-													coast of the Semantics, a large language ocean."</p>
-											</blockquote>
-										</div>
-									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -831,9 +784,51 @@
 
 		</script>
 
-		<script>
 
-		</script>
+
+<script>
+	
+	// Function to fetch data from API and populate the list
+	async function fetchData() {
+		try {
+			const response = await fetch('https://taithaowedding.click/api/v1/wishes');
+			const data = await response.json();
+
+			data?.content?.forEach(item => {
+				// Tạo phần tử div chứa phần tử con
+				const outerDiv = document.createElement('div');
+				outerDiv.className = 'item';
+				
+
+				// Tạo phần tử con chứa nội dung như mô tả
+				const innerDiv = document.createElement('div');
+				innerDiv.className = 'testimony-slide active text-center';
+
+				const span = document.createElement('span');
+				span.textContent = item.name;
+
+				const blockquote = document.createElement('blockquote');
+				const p = document.createElement('p');
+				p.textContent = item.description;
+				blockquote.appendChild(p);
+
+				// Gắn các phần tử con vào phần tử cha
+				innerDiv.appendChild(span);
+				innerDiv.appendChild(blockquote);
+				outerDiv.appendChild(innerDiv);
+
+				const data = document.getElementById('data-list');
+				data.appendChild(outerDiv);
+				console.log(data)
+			});
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	// Call the fetchData function when the page loads
+	window.onload = fetchData;
+</script>
 
 </body>
 
