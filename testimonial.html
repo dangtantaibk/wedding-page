@@ -12,8 +12,8 @@
 		@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
 
 		:root {
-			--yellow: #ffdd40;
-			--dark: #2f313a;
+			--yellow: #113468;
+			--dark: #e6e9f6;
 			--deg: -86deg;
 			--trans: all 0.4s ease 0s;
 		}
@@ -25,7 +25,7 @@
 			display: flex;
 			justify-content: center;
 			font-family: "Lato", Arial, Helvetica, serif;
-			background: linear-gradient(90deg, #131417, var(--dark) 35% 65%, #131417);
+			/* background: linear-gradient(90deg, #131417, var(--dark) 35% 65%, #131417); */
 			font-size: 1em;
 		}
 
@@ -161,7 +161,7 @@
 		}
 
 		.co-funder:after {
-			content: "CO-FUNDER";
+			content: "NGƯỜI THÂN YÊU";
 			font-size: 0.75em;
 			position: absolute;
 			top: -1.5em;
@@ -209,84 +209,84 @@
 		}
 	</style>
 </head>
-
-<body>
-	<div class="content">
-
-		<ul class="team">
-			<li class="member co-funder">
-				<div class="thumb"><img
+				<!-- <div class="thumb"><img
 						src="https://assets.codepen.io/3/internal/avatars/users/default.png?fit=crop&format=auto&height=120&width=120">
-				</div>
+				</div> -->
+<body>
+	<!-- <div class="content"> -->
+
+		<ul class="team" id="data-list">
+			<!-- <li class="member co-funder">
 				<div class="description">
 					<h3>Chris Coyier</h3>
-					<p>Chris is a front-end developer and designer. He writes a bunch of HTML, CSS, and JavaScript and
-						shakes the pom-poms for CodePen.<br><a href="https://codepen.io/chriscoyier/">@chriscoyier</a>
+					<p style="color: #fff;">Chris is a front-end developer and designer. He writes a bunch of HTML, CSS, and JavaScript and
+						shakes the pom-poms for CodePen.<br><a href="#">@chriscoyier</a>
 					</p>
 				</div>
-			</li>
-			<li class="member co-funder">
-				<div class="thumb"><img
-						src="https://assets.codepen.io/2/internal/avatars/users/default.png?height=120&width=120"></div>
-				<div class="description">
-					<h3>Alex Vazquez</h3>
-					<p>Alex is a full stack developer. Alex does JavaScript development for CodePen, both front end and
-						back, and just about everything else.<br><a href="https://codepen.io/quezo/">@quezo</a></p>
-				</div>
-			</li>
-			<li class="member">
-				<div class="thumb"><img
-						src="https://assets.codepen.io/652/internal/avatars/users/default.png?height=120&width=120">
-				</div>
-				<div class="description">
-					<h3>Marie Mosley</h3>
-					<p>Marie wears a lot of hats. She is our documentation lead, customer support maestra, editor, and
-						community manager.<br><a href="https://codepen.io/mariemosley/">@mariemosley</a></p>
-				</div>
-			</li>
-			<li class="member">
-				<div class="thumb"><img
-						src="https://assets.codepen.io/39255/internal/avatars/users/default.png?height=120&width=120">
-				</div>
-				<div class="description">
-					<h3>Stephen Shaw</h3>
-					<p>Stephen is a designer/developer residing in Houston. He likes to build animations with CSS &
-						JavaScript.<br><a href="https://codepen.io/shshaw/">@shshaw</a></p>
-				</div>
-			</li>
-			<li class="member">
-				<div class="thumb"><img
-						src="https://cpwebassets.codepen.io/assets/packs/about-rachelsmith-6878ca76a1d9200e6c296e810050b8cb.jpg?height=120&width=120">
-				</div>
-				<div class="description">
-					<h3>Rachel Smith</h3>
-					<p>Rachel is a full stack'er in Australia. Not only a creative and talented designer and developer,
-						but a great technical writer.<br><a href="https://codepen.io/rachsmith/">@rachsmith</a></p>
-				</div>
-			</li>
-			<li class="member">
-				<div class="thumb"><img
-						src="https://cpwebassets.codepen.io/assets/packs/about-robertkieffer-77c28f3a6efe082fd1903affae540b8a.jpg?height=120">
-				</div>
-				<div class="description">
-					<h3>Robert Kieffer</h3>
-					<p>Robert is a full-stack dev with a penchant for open-source work. He dwells in the murky
-						depthsmurky depths of JS.<br><a href="https://codepen.io/broofa/">@broofa</a></p>
-				</div>
-			</li>
-			<li class="member">
-				<div class="thumb"><img
-						src="https://cpwebassets.codepen.io/assets/packs/about-deevazquez-c8e8b7f9e803f462b7be19ea60b9272f.jpg?height=120&width=120">
-				</div>
-				<div class="description">
-					<h3>Dee Vazquez</h3>
-					<p>Dee is a full stack developer who started her career in finance. She can jump from Rails to React
-						to Go, and also manage our finances.<br><a href="https://codepen.io/deequez/">@deequez</a></p>
-				</div>
-			</li>
+			</li> -->
 		</ul>
 
-	</div>
+	<!-- </div> -->
+
+	<script>
+		// Function to fetch data from API and populate the list
+		async function fetchData() {
+			try {
+				const response = await fetch('https://taithaowedding.click/api/v1/wishes');
+				const data = await response.json();
+	
+				const dataListHtml = document.getElementById('data-list');
+
+				data?.content?.forEach(item => {
+					// Tạo phần tử li
+					const listItem = document.createElement('li');
+					listItem.className = 'member co-funder';
+
+					// Tạo phần tử div chứa nội dung
+					const divDescription = document.createElement('div');
+					divDescription.className = 'description';
+
+					// Tạo phần tử h3
+					const h3 = document.createElement('h3');
+					h3.textContent = item.name;
+
+					// Tạo phần tử p
+					const p = document.createElement('p');
+					p.style.color = '#fff';
+					p.textContent = item.description;
+
+					// Tạo phần tử a
+					const a = document.createElement('a');
+					a.href = '#';
+					a.textContent = '@' + removeAccentsAndConvertToLower(item?.name);
+
+					// Gắn các phần tử con vào phần tử cha
+					p.appendChild(document.createElement('br')); // Tạo thẻ <br> cho dòng mới
+					p.appendChild(a);
+					divDescription.appendChild(h3);
+					divDescription.appendChild(p);
+					listItem.appendChild(divDescription);
+	
+					dataListHtml.appendChild(listItem);
+				});
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		}
+	
+		function removeAccentsAndConvertToLower(text) {
+			// Loại bỏ dấu tiếng Việt và chuyển thành chữ viết thường
+			text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+			
+			// Loại bỏ các khoảng trắng và ký tự không phải chữ cái hoặc số
+			text = text.replace(/[^a-zA-Z0-9]/g, "");
+			
+			return text;
+		}
+		// Call the fetchData function when the page loads
+		window.onload = fetchData;
+	</script>
 </body>
+
 
 </html>
