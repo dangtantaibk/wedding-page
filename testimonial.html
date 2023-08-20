@@ -240,6 +240,7 @@
 				data?.content?.forEach(item => {
 					// Tạo phần tử li
 					const listItem = document.createElement('li');
+					listItem.style=" width: 100%"
 					listItem.className = 'member co-funder';
 
 					// Tạo phần tử div chứa nội dung
@@ -248,6 +249,7 @@
 
 					// Tạo phần tử h3
 					const h3 = document.createElement('h3');
+					
 					h3.textContent = item.name;
 
 					// Tạo phần tử p
@@ -282,6 +284,15 @@
 			text = text.replace(/[^a-zA-Z0-9]/g, "");
 			
 			return text;
+		}
+
+		function padTextToMinLength(text, minLength) {
+			if (text.length >= minLength) {
+				return text;
+			} else {
+				const padding = " ".repeat(minLength - text.length);
+				return text + padding;
+			}
 		}
 		// Call the fetchData function when the page loads
 		window.onload = fetchData;
