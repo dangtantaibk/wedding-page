@@ -3009,10 +3009,21 @@ fadeIn {  from {
   width: 100%;
   height: 100%;
   opacity: 0.15;
-  background-image: url('../images/background/blue-brush-1.jpg');
+  background-image: url('https://taithaowedding.click/images/background/blue-brush-1.jpg');
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  background-image: url('https://taithaowedding.click/images/qrcode.JPG');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(0.3);
+  margin-top: 20px; /* Optional: Add spacing below the image */
 }
 
 /*# sourceMappingURL=style.css.map */
