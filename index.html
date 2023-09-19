@@ -190,6 +190,7 @@
 		<!-- </body> -->
 		<!--Floating button-->
 		<div id="floating-button" class="float">
+
 			<div class="control-center open">
 				<div class="audio-play">
 					<div id="player" onclick="toggleAudio()">
@@ -197,9 +198,20 @@
 					</div>
 				</div>
 
+
+				<div class="container1" id="bank-note">
+					<div class="tooltip-lens">
+						<div class="ballon">
+							<div class="wrapper-content">
+								<p>Hộp mừng cưới</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="qrcode">
 					<div class="wrapper">
-						<div class="button" onclick="document.body.classList.add('active')">
+						<div class="button" onclick="openBankNote()">
 							<img id="player-icon" src="images/bank-note.svg" />
 							<!-- <div class="button-backgrounds">
 						<div class="button-circle button-circle1"></div>
@@ -229,17 +241,11 @@
 									<p>Tên tài khoản: <strong>Đặng Tấn Tài</strong></p>
 									<p>Số tài khoản: <strong>343153333</strong></p>
 									<p>Chi nhánh: <strong>Hồ Chí Minh</strong></p>
-									<div class="image-container">
-									</div>
 									
 									<div>
 										<div class="button" onclick="document.body.classList.remove('active')">
 											<span class="button-text">Đóng</span>
 											<div class="button-backgrounds">
-												<!-- <div class="button-circle button-circle1"></div>
-													<div class="button-circle button-circle2"></div>
-													<div class="button-circle button-circle3"></div>
-													<div class="button-circle button-circle4"></div> -->
 											</div>
 										</div>
 									</div>
@@ -819,6 +825,20 @@
 		});
 	</script>
 
+	<script>
+		setTimeout(function() {
+			var myDiv = document.getElementById("bank-note");
+			myDiv.style.display = "none";
+		}, 7000);
+	</script>
+
+	<script>
+		function openBankNote() {
+			var myDiv = document.getElementById("bank-note");
+			myDiv.style.display = "none";
+			document.body.classList.add('active');
+		}
+	</script>
 </body>
 
 </html>
